@@ -1,0 +1,11 @@
+JWT_SECRET="ALKEMY"
+JWT_EXPIRES=1d || 1h
+
+SENDGRID_API_KEY=$apikey_sendgrid
+SENGRID_FROM=$email_verified
+
+PORT=$number
+
+DB_NAME=$dbname
+DB_USERNAME=$username
+DB_PASSWORD=$password

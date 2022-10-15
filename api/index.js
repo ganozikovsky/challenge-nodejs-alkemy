@@ -1,14 +1,15 @@
 const express = require('express')
+require('dotenv').config()
+const routes = require('./routes')
+const cors = require('cors')
+const app = express()
+const db = require('./config/db')
 require('./models')
 
-const cors = require('cors')
-
-const app = express()
+// middlewares
 app.use(cors())
-
-const db = require('./config/db')
-
 app.use(express.json())
+app.use('/api', routes)
 
 db.sync({ force: false }).then(() => {
   console.log('db connected')

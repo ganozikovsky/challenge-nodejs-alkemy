@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize')
-const bcrypt = require('bcrypt')
 const sequelize = require('../config/db')
+const bcrypt = require('bcrypt')
 
 class User extends Model {
   hash (password, salt) {
@@ -16,7 +16,7 @@ class User extends Model {
 
 User.init(
   {
-    username: {
+    email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
@@ -31,8 +31,7 @@ User.init(
       allowNull: false
     },
     salt: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.STRING
     }
   },
   {
@@ -41,16 +40,12 @@ User.init(
   }
 )
 
-User.beforeCreate((user) => {
+User.beforeCreate(async (user) => {
   const salt = bcrypt.genSaltSync()
   user.salt = salt
   return user.hash(user.password, salt).then((hash) => {
     user.password = hash
   })
 })
-
-User.prototype.comparePassword = async function (password) {
-  return await bcrypt.compare(password, this.password)
-}
 
 module.exports = User

@@ -4,7 +4,7 @@ const Movie = require('./Movie')
 const User = require('./User')
 
 Character.belongsToMany(Movie, { as: 'movies', through: 'character_movies' })
-Movie.belongsToMany(Character, { as: 'characters', through: 'movie_characters' })
+Movie.belongsToMany(Character, { as: 'characters', through: 'character_movies' })
 Movie.belongsTo(Genre)
 
 module.exports = {
