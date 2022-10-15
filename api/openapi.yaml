@@ -5,7 +5,7 @@ info:
     API REST developed with Node
   version: 1.0.0
 servers:
-  - url: /  
+  - url: http://localhost:8080 
     description: ''
 tags:
   - name: Auth
@@ -16,7 +16,7 @@ tags:
     description: ''
 
 paths:
-  /auth/register:
+  /api/auth/register:
     post:
       tags: 
         - Auth
@@ -58,7 +58,7 @@ paths:
                   token:
                     type: string
                     example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJmZWRhcG9uQGdtYWlsLmNvbSIsImlhdCI6MTY0MjE4NTc5NywiZXhwIjoxNjQyMjcyMTk3fQ.cmp8W413-mo7Ji-mVnq-3ei9zHCOyEO1KaN8pAWLuJc
-  /auth/login:
+  /api/auth/login:
     post:
       tags: 
         - Auth
@@ -101,7 +101,7 @@ paths:
                     type: string
                     example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJmZWRhcG9uQGdtYWlsLmNvbSIsImlhdCI6MTY0MjE4NTc5NywiZXhwIjoxNjQyMjcyMTk3fQ.cmp8W413-mo7Ji-mVnq-3ei9zHCOyEO1KaN8pAWLuJc
       
-  /characters:
+  /api/characters:
     get:
       security:
         - bearerAuth: []
@@ -151,7 +151,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Character'
                   
-  /characters/{id}:
+  /api/characters/{id}:
     get:
       security:
         - bearerAuth: []
@@ -223,7 +223,7 @@ paths:
                   message:
                     type: string
                     example: character deleted
-  /movies:
+  /api/movies:
     get:
       security:
         - bearerAuth: []
@@ -238,11 +238,11 @@ paths:
           schema:
             type: string
         - in: query
-          name: calification
+          name: order
           required: false
-          description: Filter by calification
+          description: Filter by order
           schema:
-            type: integer
+            type: string
       responses:
         '200':
           description: All movies than match the optional filter
@@ -280,7 +280,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Movie'
                   
-  /movies/{id}:
+  /api/movies/{id}:
     get:
       security:
         - bearerAuth: []
