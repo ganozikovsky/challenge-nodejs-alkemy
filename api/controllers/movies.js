@@ -4,7 +4,6 @@ async function getAll (req, res) {
   const { order } = req.query
   try {
     if (order && (order === 'asc' || order === 'desc')) {
-      console.log(req.query)
       const movies = await Movie.findAll({
         order: [
           ['createdAt', `${order}`]
