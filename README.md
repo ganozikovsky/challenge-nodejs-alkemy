@@ -1,18 +1,37 @@
 # CHALLENGE BACKEND - NodeJs 🚀
 
-## Instalación
-
+# Instalación
 ```
-git clone https://github.com/fedapon/alkemy-nodejs-challenge.git
+git clone https://github.com/ganozikovsky/challenge-nodejs-alkemy.git
 
-cd alkemy-nodejs-challenge
+cd challenge-nodes-alkemy
 
 npm install
+```
+
+### Antes de correr los siguientes 2 comandos, asegúrese de la configuración y creación de una base de datos con motor PostgreSQL:
+
+```
+npm run seed
 
 npm run dev
 ```
+### Configurar variables de entorno:
+```
+JWT_SECRET="ALKEMY"
+JWT_EXPIRES=1d || 1h
 
-La documentación del challenge está disponible a utilizando swagger a traves del endpoint:
+SENDGRID_API_KEY=$apikey_sendgrid
+SENGRID_FROM=$email_verified
+
+PORT=$number
+
+DB_NAME=$dbname
+DB_USERNAME=$username
+DB_PASSWORD=$password
+```
+
+### La documentación del challenge está disponible a utilizando swagger a traves del endpoint:
 
 ```
 - /api/docs
@@ -133,19 +152,3 @@ De forma *opcional*, se podrán agregar tests de los diferentes endpoints de la 
 - Acceso a recursos inexistentes en endpoints de detalle
 
 Los tests pueden realizarse utilizando Mocha + Chai.
-
-## Instalación
-
-```
-git clone https://github.com/fedapon/alkemy-nodejs-challenge.git
-
-cd alkemy-nodejs-challenge
-
-npm install
-
-npm run start
-```
-
-La documentación del challenge está disponible a utilizando swagger a traves del endpoint:
-
-- /docs
